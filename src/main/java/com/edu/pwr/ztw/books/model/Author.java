@@ -1,7 +1,5 @@
 package com.edu.pwr.ztw.books.model;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.UUID;
 
 public class Author {
@@ -14,7 +12,6 @@ public class Author {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
 
     public String getLastName() {
         return lastName;

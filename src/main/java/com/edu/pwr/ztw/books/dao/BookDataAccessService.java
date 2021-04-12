@@ -6,8 +6,7 @@ import java.util.*;
 @Repository("bookDAO")
 public class BookDataAccessService implements BookDAO {
 
-    private static List<Book> DATABASE_BOOKS = new ArrayList<>(Arrays.asList(new Book(UUID.randomUUID(), "Ziemia obiecana", "Barack Obama", 340),
-                                                                            new Book(UUID.randomUUID(), "On", "Bzezinska Diana", 360)));
+    private static List<Book> DATABASE_BOOKS = new ArrayList<>();
 
 
     @Override

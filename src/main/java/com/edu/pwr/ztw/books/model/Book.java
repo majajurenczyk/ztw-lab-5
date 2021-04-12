@@ -6,10 +6,10 @@ import java.util.UUID;
 public class Book {
     private UUID id;
     private String title;
-    private String author;
+    private UUID author;
     private int numberOfPages;
 
-    public Book(@JsonProperty("id") UUID id, @JsonProperty("title") String title,  @JsonProperty("author") String author, @JsonProperty("pages") int numberOfPages){
+    public Book(@JsonProperty("id") UUID id, @JsonProperty("title") String title,  @JsonProperty("author") UUID author, @JsonProperty("pages") int numberOfPages){
         this.id = id;
         this.title = title;
         this.author = author;
@@ -24,11 +24,11 @@ public class Book {
         this.numberOfPages = numberOfPages;
     }
 
-    public String getAuthor() {
+    public UUID getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(UUID author) {
         this.author = author;
     }
 

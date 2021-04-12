@@ -19,8 +19,13 @@ public class BookController {
     }
 
     @RequestMapping(path = "books/add", method = RequestMethod.POST)
-    public void addBook(@RequestBody @NonNull Book book){
-        bookService.addBook(book);
+    public String addBook(@RequestBody @NonNull Book book){
+        if(bookService.addBook(book) == 1){
+            return "Dodano książkę";
+        }
+        else {
+            return "Błąd dodawania książki";
+        }
     }
 
     @RequestMapping(path = "books/get", method = RequestMethod.GET)

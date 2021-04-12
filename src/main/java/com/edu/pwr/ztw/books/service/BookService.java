@@ -1,5 +1,6 @@
 package com.edu.pwr.ztw.books.service;
 
+import com.edu.pwr.ztw.books.dao.AuthorDAO;
 import com.edu.pwr.ztw.books.dao.BookDAO;
 import com.edu.pwr.ztw.books.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,12 @@ import java.util.UUID;
 @Service("bookService")
 public class BookService implements IBookService {
     private final BookDAO bookDAO;
+    private final AuthorDAO authorDAO;
 
     @Autowired //autowiring into interface
-    public BookService(@Qualifier("bookDAO") BookDAO bookDAO){
+    public BookService(@Qualifier("bookDAO") BookDAO bookDAO, @Qualifier("authorDAO") AuthorDAO authorDAO){
         this.bookDAO = bookDAO;
+        this.authorDAO = authorDAO;
     }
     @Override
     public Collection<Book> getBooks() {
@@ -26,7 +29,10 @@ public class BookService implements IBookService {
 
     @Override
     public int addBook(Book book) {
-        return bookDAO.insertBook(book);
+        if(authorDAO.selectAuthorById(book.getAuthor()).isPresent()){
+            return bookDAO.insertBook(book);
+        }
+        return -1;
     }
 
     @Override
