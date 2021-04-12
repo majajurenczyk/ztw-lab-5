@@ -13,4 +13,5 @@ public interface IAuthorService {
     Optional<Author> getAuthorById(UUID id);
     int deleteAuthorById(UUID id);
     int updateAuthorById(UUID id, Author authorToUpdate);
+    Collection<Book> getAuthorBooks(UUID id);
 }

@@ -44,4 +44,8 @@ public class AuthorController {
     public void updateAuthorById(@PathVariable("id") UUID id, @NonNull @RequestBody Author authorToUpdate){
         authorService.updateAuthorById(id, authorToUpdate);
     }
+    @RequestMapping(path = "authors/getbooks/{id}", method = RequestMethod.GET)
+    public Collection<Book> getAuthorBooks(@PathVariable("id") UUID id){
+        return authorService.getAuthorBooks(id);
+    }
 }

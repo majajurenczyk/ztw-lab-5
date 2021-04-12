@@ -52,4 +52,9 @@ public class AuthorService implements IAuthorService {
     public int updateAuthorById(UUID id, Author authorToUpdate) {
         return authorDAO.updateAuthorById(id, authorToUpdate);
     }
+
+    @Override
+    public Collection<Book> getAuthorBooks(UUID id) {
+        return bookDAO.selectBooksByAuthorId(id);
+    }
 }
