@@ -35,11 +35,11 @@ public class BookController {
 
     @RequestMapping(path = "books/delete/{id}", method = RequestMethod.DELETE)
     public void deleteBookById(@PathVariable("id") UUID id){
-        bookService.deleteBook(id);
+        bookService.deleteBookById(id);
     }
 
     @RequestMapping(path = "books/update/{id}", method = RequestMethod.PUT)
     public void updateBookById(@PathVariable("id") UUID id, @NonNull @RequestBody Book bookToUpdate){
-        bookService.updateBook(id, bookToUpdate);
+        bookService.updateBookById(id, bookToUpdate);
     }
 }

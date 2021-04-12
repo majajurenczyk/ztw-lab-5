@@ -35,12 +35,12 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public int deleteBook(UUID id) {
+    public int deleteBookById(UUID id) {
         return bookDAO.deleteBookById(id);
     }
 
     @Override
-    public int updateBook(UUID id, Book bookToUpdate) {
+    public int updateBookById(UUID id, Book bookToUpdate) {
        return bookDAO.updateBookById(id, bookToUpdate);
     }
 }
