@@ -20,27 +20,27 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @RequestMapping(path = "author/add", method = RequestMethod.POST)
+    @RequestMapping(path = "authors/add", method = RequestMethod.POST)
     public void addAuthor(@RequestBody @NonNull Author author){
         authorService.addAuthor(author);
     }
 
-    @RequestMapping(path = "author/get", method = RequestMethod.GET)
+    @RequestMapping(path = "authors/get", method = RequestMethod.GET)
     public Collection<Author> getAuthors(){
         return authorService.getAuthors();
     }
 
-    @RequestMapping(path = "author/get/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "authors/get/{id}", method = RequestMethod.GET)
     public Author getAuthorById(@PathVariable("id") UUID id){
         return authorService.getAuthorById(id).orElse(null);
     }
 
-    @RequestMapping(path = "author/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "authors/delete/{id}", method = RequestMethod.DELETE)
     public void deleteAuthorById(@PathVariable("id") UUID id){
         authorService.deleteAuthorById(id);
     }
 
-    @RequestMapping(path = "author/update/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "authors/update/{id}", method = RequestMethod.PUT)
     public void updateAuthorById(@PathVariable("id") UUID id, @NonNull @RequestBody Author authorToUpdate){
         authorService.updateAuthorById(id, authorToUpdate);
     }
