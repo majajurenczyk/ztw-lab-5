@@ -6,7 +6,7 @@ import java.util.*;
 @Repository("bookDAO")
 public class BookDataAccessService implements BookDAO {
 
-    private static List<Book> DATABASE_BOOKS = new ArrayList<Book>(Arrays.asList(new Book(UUID.randomUUID(), "Ziemia obiecana", "Barack Obama", 340),
+    private static List<Book> DATABASE_BOOKS = new ArrayList<>(Arrays.asList(new Book(UUID.randomUUID(), "Ziemia obiecana", "Barack Obama", 340),
                                                                             new Book(UUID.randomUUID(), "On", "Bzezinska Diana", 360)));
 
 
@@ -22,13 +22,13 @@ public class BookDataAccessService implements BookDAO {
     }
 
     @Override
-    public Optional<Book> selectBookByID(UUID id) {
+    public Optional<Book> selectBookById(UUID id) {
         return DATABASE_BOOKS.stream().filter(book -> book.getId().equals(id)).findFirst();
     }
 
     @Override
     public int deleteBookById(UUID id) {
-        Optional<Book> foundBook = selectBookByID(id);
+        Optional<Book> foundBook = selectBookById(id);
         if(foundBook.isPresent()){
             DATABASE_BOOKS.remove(foundBook.get());
             return 1;
@@ -40,7 +40,7 @@ public class BookDataAccessService implements BookDAO {
 
     @Override
     public int updateBookById(UUID id, Book book) {
-        return selectBookByID(id).map(b -> {
+        return selectBookById(id).map(b -> {
             int indexOfBookToUpdate = DATABASE_BOOKS.indexOf(book);
             if(indexOfBookToUpdate >= 0){
                 DATABASE_BOOKS.set(indexOfBookToUpdate, book);

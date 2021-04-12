@@ -11,7 +11,7 @@ public interface BookDAO {
         return insertBook(id, book);
     }
     List<Book> selectBooks();
-    Optional<Book> selectBookByID(UUID id);
+    Optional<Book> selectBookById(UUID id);
     int deleteBookById(UUID id);
     int updateBookById(UUID id, Book book);
 }

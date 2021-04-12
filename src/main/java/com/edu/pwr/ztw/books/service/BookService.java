@@ -31,7 +31,7 @@ public class BookService implements IBookService {
 
     @Override
     public Optional<Book> getBookById(UUID id) {
-        return bookDAO.selectBookByID(id);
+        return bookDAO.selectBookById(id);
     }
 
     @Override
