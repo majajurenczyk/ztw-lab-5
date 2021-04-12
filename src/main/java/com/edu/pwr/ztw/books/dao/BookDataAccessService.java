@@ -57,8 +57,9 @@ public class BookDataAccessService implements BookDAO {
 
     @Override
     public int updateBookById(UUID id, Book book) {
+        book.setId(id);
         return selectBookById(id).map(b -> {
-            int indexOfBookToUpdate = DATABASE_BOOKS.indexOf(book);
+            int indexOfBookToUpdate = DATABASE_BOOKS.indexOf(b);
             if(indexOfBookToUpdate >= 0){
                 DATABASE_BOOKS.set(indexOfBookToUpdate, book);
                 return 1;
