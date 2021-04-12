@@ -16,11 +16,14 @@ import java.util.UUID;
 @Service("authorService")
 public class AuthorService implements IAuthorService {
     private final AuthorDAO authorDAO;
+    private final BookDAO bookDAO;
 
     @Autowired //autowiring into interface
-    public AuthorService(@Qualifier("authorDAO") AuthorDAO authorDAO){
+    public AuthorService(@Qualifier("authorDAO") AuthorDAO authorDAO, @Qualifier("bookDAO") BookDAO bookDAO){
         this.authorDAO = authorDAO;
+        this.bookDAO = bookDAO;
     }
+
     @Override
     public Collection<Author> getAuthors() {
         return authorDAO.selectAuthors();
@@ -38,7 +41,11 @@ public class AuthorService implements IAuthorService {
 
     @Override
     public int deleteAuthorById(UUID id) {
-        return authorDAO.deleteAuthorById(id);
+        if (authorDAO.deleteAuthorById(id) == 1){
+            return 1 + bookDAO.deleteBooksByAuthorId(id);
+        }
+        return 0;
+
     }
 
     @Override

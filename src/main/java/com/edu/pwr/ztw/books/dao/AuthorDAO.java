@@ -10,7 +10,7 @@ public interface AuthorDAO {
     int insertAuthor(UUID id, Author author);
     default int insertAuthor(Author author){
         UUID id = UUID.randomUUID();
-        return  insertAuthor(id, author);
+        return insertAuthor(id, author);
     }
     List<Author> selectAuthors();
     Optional<Author> selectAuthorById(UUID id);
