@@ -9,8 +9,9 @@ public class AuthorDataAccessService implements AuthorDAO {
 
     @Override
     public Author insertAuthor(UUID id, Author author) {
-        DATABASE_AUTHORS.add(new Author(id, author.getFirstName(), author.getLastName()));
-        return author;
+        Author newAuth = new Author(id, author.getFirstName(), author.getLastName());
+        DATABASE_AUTHORS.add(newAuth);
+        return newAuth;
     }
 
     @Override

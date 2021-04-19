@@ -15,6 +15,7 @@ import org.springframework.web.servlet.function.EntityResponse;
 import java.util.Collection;
 import java.util.UUID;
 
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 public class AuthorController {
     private final AuthorService authorService;
