@@ -6,6 +6,10 @@ import java.util.*;
 @Repository("authorDAO")
 public class AuthorDataAccessService implements AuthorDAO {
     private static List<Author> DATABASE_AUTHORS = new ArrayList<>();
+    static {
+        DATABASE_AUTHORS.add(new Author(UUID.randomUUID(), "Barack", "Obama"));
+        DATABASE_AUTHORS.add(new Author(UUID.randomUUID(), "Andrzej", "Sapkowski"));
+    }
 
     @Override
     public Author insertAuthor(UUID id, Author author) {
