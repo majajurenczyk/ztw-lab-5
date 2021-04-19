@@ -7,13 +7,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface AuthorDAO {
-    int insertAuthor(UUID id, Author author);
-    default int insertAuthor(Author author){
+    Author insertAuthor(UUID id, Author author);
+    default Author insertAuthor(Author author){
         UUID id = UUID.randomUUID();
         return insertAuthor(id, author);
     }
     List<Author> selectAuthors();
     Optional<Author> selectAuthorById(UUID id);
     int deleteAuthorById(UUID id);
-    int updateAuthorById(UUID id, Author author);
+    Author updateAuthorById(UUID id, Author author);
 }

@@ -9,9 +9,9 @@ import java.util.UUID;
 
 public interface IAuthorService {
     Collection<Author> getAuthors();
-    int addAuthor(Author author);
+    Author addAuthor(Author author);
     Optional<Author> getAuthorById(UUID id);
     int deleteAuthorById(UUID id);
-    int updateAuthorById(UUID id, Author authorToUpdate);
+    Author updateAuthorById(UUID id, Author authorToUpdate);
     Collection<Book> getAuthorBooks(UUID id);
 }

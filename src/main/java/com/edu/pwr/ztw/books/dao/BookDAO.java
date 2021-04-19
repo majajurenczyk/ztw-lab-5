@@ -5,8 +5,8 @@ import com.edu.pwr.ztw.books.model.Book;
 import java.util.*;
 
 public interface BookDAO {
-    int insertBook(UUID id, Book book);
-    default int insertBook(Book book){
+    Book insertBook(UUID id, Book book);
+    default Book insertBook(Book book){
         UUID id = UUID.randomUUID();
         return insertBook(id, book);
     }
@@ -15,5 +15,5 @@ public interface BookDAO {
     List<Book> selectBooksByAuthorId(UUID id);
     int deleteBookById(UUID id);
     int deleteBooksByAuthorId(UUID id);
-    int updateBookById(UUID id, Book book);
+    Book updateBookById(UUID id, Book book);
 }

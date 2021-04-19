@@ -28,11 +28,11 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public int addBook(Book book) {
+    public Book addBook(Book book) {
         if(authorDAO.selectAuthorById(book.getAuthor()).isPresent()){
             return bookDAO.insertBook(book);
         }
-        return -1;
+        return null;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public int updateBookById(UUID id, Book bookToUpdate) {
+    public Book updateBookById(UUID id, Book bookToUpdate) {
        return bookDAO.updateBookById(id, bookToUpdate);
     }
 }

@@ -30,7 +30,7 @@ public class AuthorService implements IAuthorService {
     }
 
     @Override
-    public int addAuthor(Author author) {
+    public Author addAuthor(Author author) {
         return authorDAO.insertAuthor(author);
     }
 
@@ -49,7 +49,7 @@ public class AuthorService implements IAuthorService {
     }
 
     @Override
-    public int updateAuthorById(UUID id, Author authorToUpdate) {
+    public Author updateAuthorById(UUID id, Author authorToUpdate) {
         return authorDAO.updateAuthorById(id, authorToUpdate);
     }
 

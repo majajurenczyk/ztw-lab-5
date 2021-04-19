@@ -8,9 +8,9 @@ public class AuthorDataAccessService implements AuthorDAO {
     private static List<Author> DATABASE_AUTHORS = new ArrayList<>();
 
     @Override
-    public int insertAuthor(UUID id, Author author) {
+    public Author insertAuthor(UUID id, Author author) {
         DATABASE_AUTHORS.add(new Author(id, author.getFirstName(), author.getLastName()));
-        return 1;
+        return author;
     }
 
     @Override
@@ -38,14 +38,14 @@ public class AuthorDataAccessService implements AuthorDAO {
     }
 
     @Override
-    public int updateAuthorById(UUID id, Author author) {
+    public Author updateAuthorById(UUID id, Author author) {
         return selectAuthorById(id).map(a -> {
             int indexOfAuthorToUpdate = DATABASE_AUTHORS.indexOf(a);
             if(indexOfAuthorToUpdate >= 0){
                 DATABASE_AUTHORS.set(indexOfAuthorToUpdate, author);
-                return 1;
+                return author;
             }
-            return 0;
-        }).orElse(0);
+            return null;
+        }).orElse(null);
     }
 }
